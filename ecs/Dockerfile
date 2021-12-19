@@ -30,5 +30,5 @@ RUN mkdir -p tmp/pids
 VOLUME $APP_PATH/public
 VOLUME $APP_PATH/tmp
 
-RUN yarn install --check-files
+# RUN yarn install --check-files
 RUN SECRET_KEY_BASE=placeholder bundle exec rails assets:precompile
