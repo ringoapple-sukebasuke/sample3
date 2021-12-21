@@ -79,7 +79,7 @@ jobs:
           yarn install
       - name: setup migrate
         run: |
-          rails db:create RAILS_ENV=myapp_test
-          rails db:migrate RAILS_ENV=myapp_test
+          rails db:create RAILS_ENV=myapp_development
+          rails db:migrate RAILS_ENV=myapp_development
       - name: run spec
         run: bundle exec rspec
