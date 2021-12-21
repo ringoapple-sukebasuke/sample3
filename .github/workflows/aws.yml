@@ -53,27 +53,27 @@ jobs:
 
 
 
-test:
-    runs-on: ubuntu-latest
+  test:
+      runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v2
-      - name: Set up Ruby
-        uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: 2.6.6
-      - name: Install dependencies
-        run: bundle install
-      - name: Setup Database
-        run: |
-          sudo systemctl start mysql
-          bundle exec rake db:create RAILS_ENV=development
-        env:
-          RAILS_ENV: develop
-          SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
-          MYSQL_DEV_USER: ${{ secrets.MYSQL_DEV_USER }}
-          MYSQL_DEV_PASSWORD: ${{ secrets.MYSQL_DEV_PASSWORD }}
-      - name: Run Rspec
-        run: bundle exec rspec
-        env:
-          RAILS_ENV: develop
+      steps:
+        - uses: actions/checkout@v2
+        - name: Set up Ruby
+          uses: ruby/setup-ruby@v1
+          with:
+            ruby-version: 2.6.6
+        - name: Install dependencies
+          run: bundle install
+        - name: Setup Database
+          run: |
+            sudo systemctl start mysql
+            bundle exec rake db:create RAILS_ENV=development
+          env:
+            RAILS_ENV: develop
+            SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
+            MYSQL_DEV_USER: ${{ secrets.MYSQL_DEV_USER }}
+            MYSQL_DEV_PASSWORD: ${{ secrets.MYSQL_DEV_PASSWORD }}
+        - name: Run Rspec
+          run: bundle exec rspec
+          env:
+            RAILS_ENV: develop
