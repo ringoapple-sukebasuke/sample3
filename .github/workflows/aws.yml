@@ -52,7 +52,7 @@ jobs:
         cluster: sample-cluster
 
 
-  test:
+
 test:
     runs-on: ubuntu-latest
 
