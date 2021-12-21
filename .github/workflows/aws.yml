@@ -65,8 +65,6 @@ jobs:
       image: ruby:2.6.6
     steps:
       - uses: actions/checkout@v2
-      - name: setup bundle
-        run: bundle install
       - name: install chorme
         run: |
           curl -sS -L https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
