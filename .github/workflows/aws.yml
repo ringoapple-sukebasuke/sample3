@@ -55,25 +55,35 @@ jobs:
 
   test:
       runs-on: ubuntu-latest
-
-      steps:
-        - uses: actions/checkout@v2
-        - name: Set up Ruby
-          uses: ruby/setup-ruby@v1
-          with:
-            ruby-version: 2.6.6
-        - name: Install dependencies
-          run: bundle install
-        - name: Setup Database
-          run: |
-            sudo systemctl start mysql
-            bundle exec rake db:create RAILS_ENV=development
-          env:
-            RAILS_ENV: develop
-            SECRET_KEY_BASE: ${{ secrets.SECRET_KEY_BASE }}
-            MYSQL_DEV_USER: ${{ secrets.MYSQL_DEV_USER }}
-            MYSQL_DEV_PASSWORD: ${{ secrets.MYSQL_DEV_PASSWORD }}
-        - name: Run Rspec
-          run: bundle exec rspec
-          env:
-            RAILS_ENV: develop
+      services:
+      db:
+        image: mysql:8.0
+        env:
+          MYSQL_USER: root
+          MYSQL_ROOT_PASSWORD: password
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+    container:
+      image: ruby:2.6.6
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup bundle
+        run: bundle install
+      - name: install chorme
+        run: |
+          curl -sS -L https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
+          echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
+          apt-get update -q -y
+          apt-get install -y google-chrome-stable
+      - name: setup yarn
+        run: |
+          curl -sL https://deb.nodesource.com/setup_12.x | bash -
+          apt-get install -y nodejs
+          npm install -g yarn
+          yarn install
+      - name: setup migrate
+        run: |
+          rails db:create RAILS_ENV=test
+          rails db:migrate RAILS_ENV=test
+      - name: run spec
+        run: bundle exec rspec
+  
