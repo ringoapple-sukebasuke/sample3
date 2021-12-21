@@ -64,22 +64,16 @@ jobs:
     container:
       image: ruby:2.6.6
     steps:
-      - uses: actions/checkout@v2
-      - name: install chorme
-        run: |
-          curl -sS -L https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
-          echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google.list
-          apt-get update -q -y
-          apt-get install -y google-chrome-stable
-      - name: setup yarn
-        run: |
-          curl -sL https://deb.nodesource.com/setup_12.x | bash -
-          apt-get install -y nodejs
-          npm install -g yarn
-          yarn install
-      - name: setup migrate
-        run: |
-          rails db:create RAILS_ENV=myapp_development
-          rails db:migrate RAILS_ENV=myapp_development
-      - name: run spec
-        run: bundle exec rspec
+    - uses: actions/checkout@v1
+    - name: Setup container
+      run: |
+        apk --update add build-base libxml2-dev libxslt-dev mysql-dev mysql-client openssl tzdata && \
+    - name: Gem install
+      run: |
+        gem update --system && gem install bundler --no-document && bundle install -j4
+    - name: Setup test DB
+      run: |
+        bundle exec rails db:setup
+    - name: Run RSpec
+      run: |
+        bundle exec rspec
