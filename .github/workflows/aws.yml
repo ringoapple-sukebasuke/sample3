@@ -50,3 +50,21 @@ jobs:
         task-definition: ${{ steps.task-def.outputs.task-definition }}
         service: sample-service
         cluster: sample-cluster
+
+
+  test:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['2.6.6'] 
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1 
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true 
+    - name: Test with Rspec
+      run: bundle exec rspec 
