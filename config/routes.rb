@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'index', to: 'home#index'
   get 'show', to: 'home#show'
+  resources :posts
 end
