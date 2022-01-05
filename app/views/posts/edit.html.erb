@@ -1,7 +1,7 @@
 <div class="main posts-new">
   <div class="container">
-    <h1 class="form-heading">投稿する</h1>
-    <%=form_tag(posts_path, method: :post) do %>
+    <h1 class="form-heading">編集する</h1>
+    <%= form_tag(post_path, method: :patch) do %>
       <div class="form">
         <div class="form-body">
           <% @post.errors.full_messages.each do |message| %>
@@ -9,9 +9,8 @@
               <%= message %>
             </div>
           <% end %>
-
           <textarea name="content"><%= @post.content %></textarea>
-          <input type="submit" value="投稿">
+          <input type="submit" value="保存">
         </div>
       </div>
     <% end %>

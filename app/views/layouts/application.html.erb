@@ -12,6 +12,11 @@
 
   <body>
     <%= render 'layouts/header' %>
+    <% if flash[:notice] %>
+      <div class="flash">
+        <%= flash[:notice] %>
+      </div>
+    <% end %>
     <div class="container-fluid py-4 <%= devise_controller? ? 'mw-md' : 'mw-xl' %>">
       <%= yield %>
     </div>
