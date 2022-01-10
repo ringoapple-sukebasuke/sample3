@@ -1,0 +1,22 @@
+<div class="main posts-show">
+  <div class="container">
+    <div class="posts-show-item">
+      <p>
+        <%= @company.number %>
+      </p>
+      <p>
+        <%= @company.name %>
+      </p>
+      <p>
+        <%= @company.information %>
+      </p>
+      <div class="post-time">
+        <%= @company.created_at %>
+      </div>
+      <div class="post-menus">
+        <%= link_to("編集", "/companys/#{@company.id}/edit") %>
+        <%= link_to("削除", "/companys/#{@company.id}", {method: :delete}) %>
+      </div>
+    </div>
+  </div>
+</div>

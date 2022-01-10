@@ -1,0 +1,20 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">投稿する</h1>
+    <%=form_tag(companys_path, method: :post) do %>
+      <div class="form">
+        <div class="form-body">
+          銘柄コード<input name="number"  class="form-control" />
+        </div>
+        <div class="form-body">
+          企業名<input name="name" class="form-control" />
+        </div>
+        <div class="form-body">
+          会社情報
+          <textarea name="information" class="form-control"><%= @company.information %></textarea>
+          <input type="submit" value="投稿">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+<div class="main posts-new">
+  <div class="container">
+    <h1 class="form-heading">編集する</h1>
+    <%= form_tag(company_path, method: :patch) do %>
+      <div class="form">
+        <div class="form-body">
+          <% @company.errors.full_messages.each do |message| %>
+            <div class="form-error">
+              <%= message %>
+            </div>
+          <% end %>
+          <div class="form-body">
+            銘柄コード<input name="number"  class="form-control" value=<%= @company.number %> />
+          </div>
+          <div class="form-body">
+            企業名<input name="name" class="form-control" value=<%= @company.name %> />
+          </div>
+          <div class="form-body">
+            会社情報
+            <textarea name="information" class="form-control"><%= @company.information %></textarea>
+          </div>
+          <input type="submit" value="保存">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

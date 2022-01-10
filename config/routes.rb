@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get 'index', to: 'home#index'
   get 'show', to: 'home#show'
   resources :posts
+  resources :companys
 end

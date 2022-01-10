@@ -1,0 +1,11 @@
+<div class="main posts-index">
+  <div class="container">
+    <% @companys.each do |company| %>
+      <div class="posts-index-item">
+        <div class="post-right">
+          <%= link_to(company.name, "/companys/#{company.id}") %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
