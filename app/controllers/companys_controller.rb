@@ -1,10 +1,13 @@
 class CompanysController < ApplicationController
+  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+
   def index
     @companys = Company.all.order(created_at: :desc)
   end
 
   def show
     @company = Company.find_by(id: params[:id])
+    @user = @company.user
   end
 
   def new
@@ -15,7 +18,8 @@ class CompanysController < ApplicationController
     @company = Company.new(
       number: params[:number],
       name: params[:name],
-      information: params[:information]
+      information: params[:information],
+      user_id: current_user.id
     )
     if @company.save
       flash[:notice] = "投稿を作成しました"
@@ -48,6 +52,14 @@ class CompanysController < ApplicationController
     @company.destroy
     flash[:notice] = "投稿を削除しました"
     redirect_to(companys_path)
-  
   end
+
+  def ensure_correct_user
+    @company = Company.find_by(id: params[:id])
+    if @company.user_id != current_user.id
+      flash[:notice] = "権限がありません"
+      redirect_to(companys_path)
+    end
+  end
+
 end

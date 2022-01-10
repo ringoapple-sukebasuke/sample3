@@ -3,6 +3,9 @@
     <% @companys.each do |company| %>
       <div class="posts-index-item">
         <div class="post-right">
+          <div class="post-user-name">
+            <%= company.user.name %>
+          </div>
           <%= link_to(company.name, "/companys/#{company.id}") %>
         </div>
       </div>
