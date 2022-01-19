@@ -12,6 +12,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    @company_id = params[:company_id]
   end
 
   def create
@@ -55,6 +56,11 @@ class PostsController < ApplicationController
       flash[:notice] = "権限がありません"
       redirect_to(posts_path)
     end
+  end
+
+  private
+  def post_params
+    params.require(:post).permit(:content)  
   end
 
 end

@@ -6,8 +6,9 @@ class CompanysController < ApplicationController
   end
 
   def show
-    @company = Company.find_by(id: params[:id])
-    @user = @company.user
+    @company = Company.find(params[:id])
+    @comments = @company.comments
+    @comment = @company.comments.build
   end
 
   def new
@@ -60,6 +61,11 @@ class CompanysController < ApplicationController
       flash[:notice] = "権限がありません"
       redirect_to(companys_path)
     end
+  end
+
+  private
+  def company_params
+    params.require(:company).permit(:body)
   end
 
 end
