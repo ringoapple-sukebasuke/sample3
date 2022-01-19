@@ -4,11 +4,11 @@ class CommentsController < ApplicationController
     @comment = company.comments.build(comment_params)
     @comment.user_id = current_user.id
     if @comment.save
-      flash[:success] = "コメントしました"
-      redirect_back(fallback_location: root_path)
+      flash[:notice] = "コメントしました"
+      redirect_to company_path(params[:company_id])
     else
-      flash[:success] = "コメントできませんでした"
-      redirect_back(fallback_location: root_path)
+      flash[:notice] = "コメント失敗"
+      redirect_to company_path(params[:company_id])
     end
   end
 
