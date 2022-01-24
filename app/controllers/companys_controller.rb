@@ -9,6 +9,7 @@ class CompanysController < ApplicationController
     @company = Company.find(params[:id])
     @comments = @company.comments
     @comment = @company.comments.build
+    @user = @company.user
   end
 
   def new
@@ -65,7 +66,7 @@ class CompanysController < ApplicationController
 
   private
   def company_params
-    params.require(:company).permit(:body)
+    params.require(:company).permit(:body).merge(user_id: current_user.id)
   end
 
 end
