@@ -12,7 +12,7 @@
         <h5  class="text-primary">企業名</h5>
         <p><%= @company.name %></p>
         <h5  class="text-primary">会社情報</h5>
-        <p><%= @company.information %></p>
+        <p class="text-break"><%= @company.information %></p>
       </div>
       <div class="form-body">
         <div class="post-time">
@@ -23,8 +23,7 @@
     <div class="form">
       <p class="mt-5">コメント一覧</p>
       <% @comments.each do |c| %>
-        <div>
-          <%= c.user_id %>
+        <div class="text-break">
           <%= c.body %>
         </div>
         <br />
