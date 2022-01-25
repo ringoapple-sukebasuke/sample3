@@ -1,5 +1,13 @@
 <div class="main posts-index">
   <div class="container">
+    <%= search_form_for @q, url: companys_path do |f| %>
+      <%= f.label :name, "Keyword" %>
+      <%= f.search_field :name_cont, placeholder: "銘柄名" %>
+
+      <%= f.submit "検索" %>
+    <% end %>
+  </div>
+  <div class="container">
     <% @companys.each do |company| %>
       <div class="posts-index-item">
         <div class="post-right">

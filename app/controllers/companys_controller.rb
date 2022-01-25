@@ -2,7 +2,8 @@ class CompanysController < ApplicationController
   before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
 
   def index
-    @companys = Company.all.order(created_at: :desc)
+    @q = Company.ransack(params[:q])
+    @companys = @q.result(distinct: true)
   end
 
   def show
