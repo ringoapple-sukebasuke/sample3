@@ -6,7 +6,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :companys, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments
 
   def own?(object)
     id == object.user_id

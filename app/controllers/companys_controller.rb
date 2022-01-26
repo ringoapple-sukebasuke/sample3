@@ -9,7 +9,7 @@ class CompanysController < ApplicationController
   def show
     @company = Company.find(params[:id])
     @comments = @company.comments
-    @comment = @company.comments.build
+    @comment = Comment.new
   end
 
   def new
