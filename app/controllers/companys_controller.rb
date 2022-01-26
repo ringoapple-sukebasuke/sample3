@@ -10,7 +10,6 @@ class CompanysController < ApplicationController
     @company = Company.find(params[:id])
     @comments = @company.comments
     @comment = @company.comments.build
-    @user = @company.user
   end
 
   def new
@@ -52,9 +51,13 @@ class CompanysController < ApplicationController
 
   def destroy
     @company = Company.find_by(id: params[:id])
-    @company.destroy
+    if @company.destroy
     flash[:notice] = "投稿を削除しました"
     redirect_to(companys_path)
+    else
+      flash[:notice] = "投稿を失敗"
+      redirect_to(companys_path)
+    end
   end
 
   def ensure_correct_user
