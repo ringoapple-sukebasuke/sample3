@@ -1,12 +1,12 @@
 <header>
   <nav class="navbar navbar-expand navbar-dark bg-info ">
-    <%= link_to "Deviseサンプル", root_path, class: 'navbar-brand' %>
+    <%= link_to "stock communication", root_path, class: 'navbar-brand' %>
     <div id="Navber">
       <ul class="navbar-nav">
         <% if user_signed_in? %>
           <li class="nav-item active">
             <%= link_to current_user.name, edit_user_registration_path, class: 'nav-link' %>
-          </li>
+          </li
           <li class="nav-item active">
             <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'nav-link' %>
           </li>
