@@ -1,7 +1,7 @@
 <div class="main companys-index">
   <div class="container">
     <%= search_form_for @q, url: companys_path do |f| %>
-      <%= f.label :name, "Keyword" %>
+      <%= f.label :name, "キーワード" %>
       <%= f.search_field :name_cont, placeholder: "銘柄名" %>
 
       <%= f.submit "検索" %>
