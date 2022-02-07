@@ -1,4 +1,4 @@
-<div class="main posts-index">
+<div class="main companys-index">
   <div class="container">
     <%= search_form_for @q, url: companys_path do |f| %>
       <%= f.label :name, "Keyword" %>
@@ -9,9 +9,9 @@
   </div>
   <div class="container">
     <% @companys.each do |company| %>
-      <div class="posts-index-item">
-        <div class="post-right">
-          <div class="post-user-name">
+      <div class="companys-index-item">
+        <div class="company-right">
+          <div class="company-user-name">
             <%= company.user.name %>
           </div>
           <%= link_to(company.name, "/companys/#{company.id}") %>

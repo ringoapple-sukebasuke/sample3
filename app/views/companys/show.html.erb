@@ -1,9 +1,9 @@
-<div class="main posts-show">
+<div class="main companys-show">
   <h1>投稿詳細ページ</h1>
   <div class="container">
     <div class="form">
       <div class="form-body">
-        <div class="post-user-name">
+        <div class="company-user-name">
           <%= @company.user.name %>
         </div>
         <br>
@@ -15,12 +15,12 @@
         <p class="text-break"><%= @company.information %></p>
       </div>
       <div class="form-body">
-        <div class="post-time">
+        <div class="company-time">
           <%= @company.created_at %>
         </div>
       </div>
       <% if @company.user_id == current_user.id %>
-        <div class="post-menus">
+        <div class="company-menus">
           <%= link_to("編集", "/companys/#{@company.id}/edit") %>
           <%= link_to("削除", "/companys/#{@company.id}", {method: :delete}) %>
         </div>
