@@ -42,7 +42,7 @@ class CompanysController < ApplicationController
     @company.information = params[:information]
     if @company.save
       flash[:notice] = "投稿を編集しました"
-      redirect_to(companys_path)
+      redirect_to(company_path)
     else
       render("/companys/edit")
     end
