@@ -1,5 +1,5 @@
 class CompanysController < ApplicationController
-  before_action :ensure_correct_user, {only: [:edit, :update, :destroy]}
+  before_action :ensure_correct_user, { only: [:edit, :update, :destroy] }
 
   def index
     @q = Company.ransack(params[:q])
@@ -46,14 +46,13 @@ class CompanysController < ApplicationController
     else
       render("/companys/edit")
     end
-  
   end
 
   def destroy
     @company = Company.find_by(id: params[:id])
     if @company.destroy
-    flash[:notice] = "投稿を削除しました"
-    redirect_to(companys_path)
+      flash[:notice] = "投稿を削除しました"
+      redirect_to(companys_path)
     else
       flash[:notice] = "投稿を失敗"
       redirect_to(companys_path)
@@ -69,8 +68,8 @@ class CompanysController < ApplicationController
   end
 
   private
+
   def company_params
     params.require(:company).permit(:body).merge(user_id: current_user.id)
   end
-
 end
