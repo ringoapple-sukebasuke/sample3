@@ -44,4 +44,10 @@ RSpec.describe User, type: :model do
     user = FactoryBot.build(:user, name: "ringo")
     expect(user.name).to eq "ringo"
   end
+
+  it "nameの文字数が11文字以上の場合エラーメッセージを返す" do
+    user =FactoryBot.build(:user, name: "hogehogehoge")
+    user.valid?
+    expect(user.errors[:name]).to include("は10文字以内で入力してください")
+  end
 end
