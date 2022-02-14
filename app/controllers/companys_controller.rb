@@ -27,6 +27,7 @@ class CompanysController < ApplicationController
       flash[:notice] = "投稿を作成しました"
       redirect_to(companys_path)
     else
+      flash[:notice] = "投稿を失敗"
       render(new_company_path)
     end
   end
