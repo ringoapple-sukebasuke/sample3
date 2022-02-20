@@ -27,15 +27,15 @@ RSpec.describe Company, type: :model do
     company = FactoryBot.build(:company, name: "MyString")
     expect(company.name).to eq "MyString"
   end
-  
+
   it "numberの文字数が5文字以上の場合エラーメッセージを返す" do
-    company =FactoryBot.build(:company, number: "12345")
+    company = FactoryBot.build(:company, number: "12345")
     company.valid?
     expect(company.errors[:number]).to include("は4文字以内で入力してください")
   end
 
   it "nameの文字数が21文字以上の場合エラーメッセージを返す" do
-    company =FactoryBot.build(:company, name: "hogehogehogehogehogehoge")
+    company = FactoryBot.build(:company, name: "hogehogehogehogehogehoge")
     company.valid?
     expect(company.errors[:name]).to include("は20文字以内で入力してください")
   end

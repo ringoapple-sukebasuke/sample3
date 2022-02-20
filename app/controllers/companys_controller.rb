@@ -1,6 +1,6 @@
 class CompanysController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, { only: [:edit, :update, :destroy] }
+  before_action :ensure_correct_user, { only: [ :crate, :edit, :update, :destroy] }
 
   def index
     @q = Company.ransack(params[:q])
@@ -18,12 +18,7 @@ class CompanysController < ApplicationController
   end
 
   def create
-    @company = Company.new(
-      number: params[:number],
-      name: params[:name],
-      information: params[:information],
-      user_id: current_user.id
-    )
+    @company = Company.new(company_params)
     if @company.save
       flash[:notice] = "投稿を作成しました"
       redirect_to(companys_path)
@@ -70,8 +65,7 @@ class CompanysController < ApplicationController
   end
 
   private
-
   def company_params
-    params.require(:company).permit(:body).merge(user_id: current_user.id)
+    params.permit(:number, :name, :information).merge(user_id: current_user.id)
   end
 end

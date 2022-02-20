@@ -1,6 +1,5 @@
 require 'rails_helper'
 
-
 RSpec.describe User, type: :model do
   it "has a valid factory" do
     expect(FactoryBot.build(:user)).to be_valid
@@ -46,7 +45,7 @@ RSpec.describe User, type: :model do
   end
 
   it "nameの文字数が11文字以上の場合エラーメッセージを返す" do
-    user =FactoryBot.build(:user, name: "hogehogehoge")
+    user = FactoryBot.build(:user, name: "hogehogehoge")
     user.valid?
     expect(user.errors[:name]).to include("は10文字以内で入力してください")
   end

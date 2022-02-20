@@ -4,7 +4,7 @@ class Company < ApplicationRecord
   validates :information, { presence: true, length: { maximum: 1000 } }
   validates :user_id, { presence: true }
 
-  belongs_to :user
+  belongs_to :owner, class_name: 'User', foreign_key: :user_id
   has_many :comments, dependent: :destroy
 
   def user

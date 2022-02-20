@@ -3,6 +3,6 @@ FactoryBot.define do
     number { 1 }
     name { "MyString" }
     information { "MyText" }
-    association :user
+    association :owner
   end
 end
