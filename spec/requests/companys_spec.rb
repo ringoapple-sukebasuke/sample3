@@ -3,8 +3,7 @@ require 'rails_helper'
 RSpec.describe "Companys", type: :request do
   let(:user) {FactoryBot.create(:user)}
   let(:company) {FactoryBot.create:company, owner: (user)}
-  # let(:other_user) {FactoryBot.create(:user)}
-  # let(:other_company) {FactoryBot.create:company, owner:(other_user)}
+
   describe "#index" do
     context "as a authenticated user" do
       it "responds successfully returns a 200 response" do
@@ -67,6 +66,18 @@ RSpec.describe "Companys", type: :request do
         patch company_url company, params: { company: company_params }
         expect(response).to redirect_to "/users/sign_in"
       end
+    end
+  end
+  describe "#destroy" do
+    it "returns a 302 response" do
+      company_params = FactoryBot.attributes_for(:company)
+      delete company_url company, params: { company: company_params }
+      expect(response).to have_http_status "302"
+    end
+    it "redirects to the sign-in page" do
+      company_params = FactoryBot.attributes_for(:company)
+      delete company_url company, params: { company: company_params }
+      expect(response).to redirect_to "/users/sign_in"
     end
   end
 end
