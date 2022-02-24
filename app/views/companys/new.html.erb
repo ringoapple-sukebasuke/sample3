@@ -4,10 +4,10 @@
     <%=form_tag(companys_path, method: :post) do %>
       <div class="form">
         <div class="form-body">
-          銘柄コード<input name="number"  class="form-control" />
+          銘柄コード<input name="number"  value="<%= @company.number %>" class="form-control" />
         </div>
         <div class="form-body">
-          企業名<input name="name" class="form-control" />
+          企業名<input name="name" value="<%= @company.name %>" class="form-control" />
         </div>
         <div class="form-body">
           会社情報
