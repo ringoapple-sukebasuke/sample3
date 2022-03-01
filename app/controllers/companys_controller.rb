@@ -1,6 +1,6 @@
 class CompanysController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, { only: [ :crate, :edit, :update, :destroy] }
+  before_action :ensure_correct_user, { only: [:crate, :edit, :update, :destroy] }
 
   def index
     @q = Company.ransack(params[:q])
@@ -65,6 +65,7 @@ class CompanysController < ApplicationController
   end
 
   private
+
   def company_params
     params.permit(:number, :name, :information).merge(user_id: current_user.id)
   end

@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "Comments", type: :request do
-  let(:user) {FactoryBot.create(:user)}
-  let(:comment) {FactoryBot.create:comment, owner: (user)}
+  let(:user) { FactoryBot.create(:user) }
+  let(:comment) { FactoryBot.create :comment, owner: user }
+
   describe "#create" do
     it "returns a 302 response" do
       comment_params = FactoryBot.attributes_for(:comment)

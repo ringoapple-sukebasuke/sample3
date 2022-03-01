@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe "Companys", type: :request do
-  let(:user) {FactoryBot.create(:user)}
-  let(:company) {FactoryBot.create:company, owner: (user)}
+  let(:user) { FactoryBot.create(:user) }
+  let(:company) { FactoryBot.create :company, owner: user }
 
   describe "#index" do
     context "as a authenticated user" do
@@ -13,6 +13,7 @@ RSpec.describe "Companys", type: :request do
         expect(response).to have_http_status "200"
       end
     end
+
     context "as a guest" do
       it "returns a 302 response" do
         get companys_path
@@ -55,6 +56,7 @@ RSpec.describe "Companys", type: :request do
         expect(company.reload.name).to eq "MyString"
       end
     end
+
     context "as a guest" do
       it "returns a 302 response" do
         company_params = FactoryBot.attributes_for(:company)
@@ -68,6 +70,7 @@ RSpec.describe "Companys", type: :request do
       end
     end
   end
+
   describe "#destroy" do
     it "returns a 302 response" do
       company_params = FactoryBot.attributes_for(:company)

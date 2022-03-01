@@ -9,6 +9,7 @@ RSpec.describe "UserAuthentications", type: :request do
     before do
       ActionMailer::Base.deliveries.clear
     end
+
     context 'パラメータが妥当な場合' do
       it 'リクエストが成功すること' do
         post user_registration_path, params: { user: user_params }
@@ -36,7 +37,7 @@ RSpec.describe "UserAuthentications", type: :request do
       it 'createが失敗すること' do
         expect do
           post user_registration_path, params: { user: invalid_user_params }
-        end.to_not change(User, :count)
+        end.not_to change(User, :count)
       end
 
       it 'エラーが表示されること' do
