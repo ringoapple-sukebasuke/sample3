@@ -23,12 +23,30 @@
 <p>・ GitHub Actions</p>
 <p>・ Docker/Docker-compase</p>
 <p>・ RSpec</p>
+<p>・ Rubocop Airbnb</p>
 
 
 
 <h2>AWS構成図</h2>
 
+<img width="836" alt="769b2648107c1775279af719234af336" src="https://user-images.githubusercontent.com/75375422/156881307-5278856a-364a-45b1-8637-fabc17b2b3b8.png">
 
+<p>・　Terraformでリソース一式を調達してAmazon ECSにデプロイ。</p>
+<p>・　master/developブランチにプッシュ後、自動でビルド・デプロイが走ります。</p>
+
+
+
+<h2>機能一覧</h2>
+<p>・ ユーザー登録、ログイン機能（device)</p>
+<p>・ 投稿機能</p>
+<p>・ コメント機能</p>
+<p>・ 検索機能（ransack)</p>
+
+<h2>テスト</h2>
+<p>・ Rspec</p>
+<p>&emsp;&emsp;○ 単体テスト（model）</p>
+<p>&emsp;&emsp;○ 機能テスト（request）</p>
+<p>&emsp;&emsp;○ 統合テスト（system）</p>
 
 
 
