@@ -30,10 +30,9 @@
       <p class="text-success mt-5">コメント一覧</p>
       <% @comments.each do |c| %>
         <div class="text-break">
-          <%= c.user.name %>
+          <p class="text-success mt-5"><%= c.user.name %></p>
           <%= c.body %>
         </div>
-        <br />
       <% end %>
     </div>
     <br>
