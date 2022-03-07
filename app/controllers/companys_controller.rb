@@ -4,7 +4,7 @@ class CompanysController < ApplicationController
 
   def index
     @q = Company.ransack(params[:q])
-    @companys = @q.result(distinct: true)
+    @companys = @q.result(distinct: true).order(id: "DESC")
   end
 
   def show
