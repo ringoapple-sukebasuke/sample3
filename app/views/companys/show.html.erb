@@ -19,6 +19,11 @@
           <%= @company.created_at %>
         </div>
       </div>
+      <% if Like.find_by(user_id: current_user.id, company_id: @company.id) %>
+        <%= link_to("いいね！済み", "/likes/#{@company.id}/destroy", {method: "post"}) %>
+      <% else %>
+        <%= link_to("いいね！", "/likes/#{@company.id}/create", {method: "post"}) %>
+      <% end %>
       <% if @company.user_id == current_user.id %>
         <div class="company-menus">
           <%= link_to("編集", "/companys/#{@company.id}/edit") %>

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  post "likes/:company_id/create" => "likes#create"
+  post "likes/:company_id/destroy" => "likes#destroy"
   devise_for :users, controllers: {
     registrations: 'users/registrations'
   }
