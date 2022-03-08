@@ -11,6 +11,7 @@ class CompanysController < ApplicationController
     @company = Company.find(params[:id])
     @comments = @company.comments
     @comment = Comment.new
+    @likes_count = Like.where(company_id: @company.id).count
   end
 
   def new
