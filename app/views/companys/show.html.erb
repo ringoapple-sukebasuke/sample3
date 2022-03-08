@@ -1,53 +1,59 @@
 <div class="main companys-show">
   <h2 class="bg-success p-2 text-white text-center">投稿詳細ページ</h2>
-  <div class="container">
-    <div class="form">
-      <div class="form-body">
-        <div class="company-user-name">
-          <%= @company.user.name %>
+  <div class="companys-show-item">
+    <div class="container">
+      <div class="form">
+        <div class="form-body">
+          <div class="company-user-name">
+            <%= @company.user.name %>
+          </div>
+          <br>
+          <h5 class="text-success">銘柄コード</h5>
+          <p><%= @company.number %></p>
+          <h5  class="text-success">企業名</h5>
+          <p><%= @company.name %></p>
+          <h5  class="text-success">会社情報</h5>
+          <p class="text-break"><%= @company.information %></p>
         </div>
-        <br>
-        <h5 class="text-success">銘柄コード</h5>
-        <p><%= @company.number %></p>
-        <h5  class="text-success">企業名</h5>
-        <p><%= @company.name %></p>
-        <h5  class="text-success">会社情報</h5>
-        <p class="text-break"><%= @company.information %></p>
-      </div>
-      <div class="form-body">
-        <div class="company-time">
-          <%= @company.created_at %>
+        <div class="form-body">
+          <div class="company-time">
+            <%= @company.created_at %>
+          </div>
         </div>
-      </div>
-      <% if Like.find_by(user_id: current_user.id, company_id: @company.id) %>
-        <%= link_to("いいね！済み", "/likes/#{@company.id}/destroy", {method: "post"}) %>
-      <% else %>
-        <%= link_to("いいね！", "/likes/#{@company.id}/create", {method: "post"}) %>
-      <% end %>
-      <% if @company.user_id == current_user.id %>
-        <div class="company-menus">
-          <%= link_to("編集", "/companys/#{@company.id}/edit") %>
-          <%= link_to("削除", "/companys/#{@company.id}", {method: :delete}) %>
-        </div>
-      <% end %>
-    </div>
-    <div class="form">
-      <p class="text-success mt-5">コメント一覧</p>
-      <% @comments.each do |c| %>
-        <div class="text-break">
-          <p class="text-success mt-5"><%= c.user.name %></p>
-          <%= c.body %>
-        </div>
-      <% end %>
-    </div>
-    <br>
-    <div class="form">
-      <%= form_with(model: [@company, @comment], local: true) do |f| %>
-        <%= f.text_area :body, class: "form-control", rows: 5 %>
-        <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
-          <i class="far fa-comments"></i> コメントする
+        <% if Like.find_by(user_id: current_user.id, company_id: @company.id) %>
+          <%= link_to("/likes/#{@company.id}/destroy", {method: "post"}) do %>
+          <span class="fa fa-heart liked-btn"></span>
+          <% end %>
+        <% else %>
+          <%= link_to("/likes/#{@company.id}/create", {method: "post"}) do %>
+          <span class="fa fa-heart unliked-btn"></span>
+          <% end %>
         <% end %>
-      <% end %>
+        <% if @company.user_id == current_user.id %>
+          <div class="company-menus">
+            <%= link_to("編集", "/companys/#{@company.id}/edit") %>
+            <%= link_to("削除", "/companys/#{@company.id}", {method: :delete}) %>
+          </div>
+        <% end %>
+      </div>
+      <div class="form">
+        <p class="text-success mt-5">コメント一覧</p>
+        <% @comments.each do |c| %>
+          <div class="text-break">
+            <p class="text-success mt-5"><%= c.user.name %></p>
+            <%= c.body %>
+          </div>
+        <% end %>
+      </div>
+      <br>
+      <div class="form">
+        <%= form_with(model: [@company, @comment], local: true) do |f| %>
+          <%= f.text_area :body, class: "form-control", rows: 5 %>
+          <%= button_tag type: "submit", class: "btn btn-success float-right mt-1" do %>
+            <i class="far fa-comments"></i> コメントする
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

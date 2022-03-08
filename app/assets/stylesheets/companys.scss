@@ -41,7 +41,7 @@
 }
 
 .companys-show-item {
-  padding: 30px;
+  padding: 15px;
   background-color: white;
   box-shadow: 0 2px 6px #c1ced7;
   overflow: hidden;
@@ -94,4 +94,17 @@
 .companys-new textarea::-webkit-input-placeholder {
   font-size: 24px;
   opacity: 0.5;
+}
+
+.unliked-btn {
+  color: #8899a6;
+}
+
+.liked-btn {
+  color: #ff2581;
+}
+
+.companys-show-item .fa {
+  font-size: 30px;
+  margin-right: 3px;
 }
