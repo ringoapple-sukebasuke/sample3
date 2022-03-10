@@ -67,6 +67,7 @@ http://sample-alb-1307064505.ap-northeast-1.elb.amazonaws.com/
 <p>・ ユーザー登録、ログイン機能（device)</p>
 <p>・ 投稿機能</p>
 <p>・ コメント機能</p>
+<p>・ いいね!機能</p>
 <p>・ 検索機能（ransack)</p>
 
 <h2>テスト</h2>

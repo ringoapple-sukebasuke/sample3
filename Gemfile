@@ -63,3 +63,4 @@ gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'ransack'
 gem 'pry-rails'
+gem 'kaminari'
