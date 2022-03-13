@@ -35,6 +35,7 @@ class CompanysController < ApplicationController
 
   def edit
     @company = Company.find_by(id: params[:id])
+    @tag_list = @company.tags.pluck(:tag_name).join(',')
   end
 
   def update
@@ -42,7 +43,9 @@ class CompanysController < ApplicationController
     @company.number = params[:number]
     @company.name = params[:name]
     @company.information = params[:information]
+    tag_list = params[:tag_name].split(",") if params[:tag_name].present?
     if @company.save
+      @company.save_tag(tag_list)
       flash[:notice] = "投稿を編集しました"
       redirect_to(company_path)
     else

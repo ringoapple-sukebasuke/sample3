@@ -1,7 +1,7 @@
 <div class="main companys-new">
   <div class="container">
     <h1 class="form-heading">編集する</h1>
-    <%= form_tag(company_path, method: :patch) do %>
+    <%=form_with url: companys_path do |f| %>
       <div class="form">
         <div class="form-body">
           <% @company.errors.full_messages.each do |message| %>
@@ -10,16 +10,18 @@
             </div>
           <% end %>
           <div class="form-body">
-            銘柄コード<input name="number"  class="form-control" value=<%= @company.number %> />
+            銘柄コード<%= f.text_field :number %>
           </div>
           <div class="form-body">
-            企業名<input name="name" class="form-control" value=<%= @company.name %> />
+            銘柄名<%= f.text_field :name %>
           </div>
           <div class="form-body">
-            会社情報
-            <textarea name="information" class="form-control"><%= @company.information %></textarea>
+            タグ<%= f.text_field :tag_name, placeholder:",で区切ってください"  %>
           </div>
-          <input type="submit" value="保存">
+          <div class="form-body">
+            会社情報<%= f.text_field :information %>
+          </div>
+          <%= f.submit%>
         </div>
       </div>
     <% end %>
