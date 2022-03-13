@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_03_08_112628) do
+ActiveRecord::Schema.define(version: 2022_03_13_093348) do
 
   create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "body", null: false
@@ -31,6 +31,15 @@ ActiveRecord::Schema.define(version: 2022_03_08_112628) do
     t.integer "user_id"
   end
 
+  create_table "company_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_tags_on_company_id"
+    t.index ["tag_id"], name: "index_company_tags_on_tag_id"
+  end
+
   create_table "likes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "user_id"
     t.integer "company_id"
@@ -38,12 +47,10 @@ ActiveRecord::Schema.define(version: 2022_03_08_112628) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "posts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
-    t.text "content"
+  create_table "tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "tag_name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id"
-    t.integer "company_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -61,4 +68,6 @@ ActiveRecord::Schema.define(version: 2022_03_08_112628) do
 
   add_foreign_key "comments", "companies"
   add_foreign_key "comments", "users"
+  add_foreign_key "company_tags", "companies"
+  add_foreign_key "company_tags", "tags"
 end

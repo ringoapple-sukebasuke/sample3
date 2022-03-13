@@ -8,7 +8,22 @@ class Company < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :likes
 
+  has_many :company_tags
+  has_many :tags, through: :company_tags
+
   def user
     User.find_by(id: user_id)
+  end
+
+  def tags_save(tag_list)
+    if self.tags != nil
+      company_tags_records = CompanyTag.where(company_id: self.id)
+      company_tags_records.destroy_all
+    end
+
+    tag_list.each do |tag|
+      inspected_tag = Tag.where(tag_name: tag).first_or_create
+      self.tags << inspected_tag
+    end
   end
 end

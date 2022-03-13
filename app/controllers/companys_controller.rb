@@ -5,6 +5,7 @@ class CompanysController < ApplicationController
   def index
     @q = Company.ransack(params[:q])
     @companys = @q.result(distinct: true).order(id: "DESC").page(params[:page]).per(5)
+    @tag_list=Tag.all
   end
 
   def show
@@ -12,6 +13,7 @@ class CompanysController < ApplicationController
     @comments = @company.comments
     @comment = Comment.new
     @likes_count = Like.where(company_id: @company.id).count
+    @company_tags = @company.tags
   end
 
   def new
@@ -20,6 +22,8 @@ class CompanysController < ApplicationController
 
   def create
     @company = Company.new(company_params)
+    tag_list = params[:tag_name].split(",") if params[:tag_name].present?
+    @company.tags_save(tag_list)
     if @company.save
       flash[:notice] = "投稿を作成しました"
       redirect_to(companys_path)
