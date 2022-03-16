@@ -1,0 +1,19 @@
+<div class="main companys-index">
+  <div class="container">
+    <h5>タグが<%=@tag.tag_name%>の投稿一覧</h5>
+    <% @tag_list.each do |list|%>
+      <%= link_to list.tag_name,search_tag_path(tag_id: list.id) %>
+      <%= "(#{list.companys.count})" %>
+    <% end %>
+  </div>
+  <div class="container">
+    <% @companys.each do |company| %>
+      <div class="companys-index-item">
+        <%=link_to company_path(company.id) do %>
+          <%= company.name %>
+        <% end %>
+      </div>
+    <% end %>
+    <%= paginate @companys %>
+  </div>
+</div>

@@ -16,7 +16,8 @@
           <p class="text-break"><%= @company.information %></p>
           <h5  class="text-success">タグ</h5>
           <% @company_tags.each do |tag| %>
-            <%=tag.tag_name%><%="(#{tag.companys.count})" %>
+            <%= link_to tag.tag_name,search_tag_path(tag_id: tag.id)%>
+            <%= "(#{tag.companys.count})" %>
           <% end %>
         </div>
         <div class="form-body">

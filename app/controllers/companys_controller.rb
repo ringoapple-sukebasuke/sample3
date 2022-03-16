@@ -5,7 +5,7 @@ class CompanysController < ApplicationController
   def index
     @q = Company.ransack(params[:q])
     @companys = @q.result(distinct: true).order(id: "DESC").page(params[:page]).per(5)
-    @tag_list=Tag.all
+    @tag_list = Tag.all
   end
 
   def show
@@ -70,6 +70,12 @@ class CompanysController < ApplicationController
       flash[:notice] = "権限がありません"
       redirect_to(companys_path)
     end
+  end
+
+  def search_tag
+    @tag_list = Tag.all
+    @tag = Tag.find(params[:tag_id])
+    @companys = @tag.companys.page(params[:page]).per(10)
   end
 
   private
