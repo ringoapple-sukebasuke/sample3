@@ -6,11 +6,6 @@
 
       <%= f.submit "検索" %>
     <% end %>
-    <% @tag_list.each do |list| %>
-      <%=link_to list.tag_name,search_tag_path(tag_id: list.id) %>
-      <%= "(#{list.companys.count})" %>
-    <% end %>
-
   </div>
   <div class="container">
     <% @companys.each do |company| %>
