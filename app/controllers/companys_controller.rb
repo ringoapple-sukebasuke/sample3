@@ -12,6 +12,7 @@ class CompanysController < ApplicationController
     @comments = @company.comments
     @comment = Comment.new
     @likes_count = Like.where(company_id: @company.id).count
+  
   end
 
   def new
@@ -20,6 +21,7 @@ class CompanysController < ApplicationController
 
   def create
     @company = Company.new(company_params)
+
     if @company.save
       flash[:notice] = "投稿を作成しました"
       redirect_to(companys_path)
@@ -31,6 +33,7 @@ class CompanysController < ApplicationController
 
   def edit
     @company = Company.find_by(id: params[:id])
+    
   end
 
   def update
@@ -38,7 +41,9 @@ class CompanysController < ApplicationController
     @company.number = params[:number]
     @company.name = params[:name]
     @company.information = params[:information]
+    
     if @company.save
+
       flash[:notice] = "投稿を編集しました"
       redirect_to(company_path)
     else
