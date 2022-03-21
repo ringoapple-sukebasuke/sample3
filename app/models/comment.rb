@@ -3,6 +3,7 @@ class Comment < ApplicationRecord
 
   belongs_to :user
   belongs_to :company
+  has_many :notifications, dependent: :destroy
 
   def user
     User.find_by(id: user_id)

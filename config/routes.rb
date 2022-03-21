@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   resources :companys do
     resources :comments, only: [:create]
   end
+  resources :notifications, only: :index
 end

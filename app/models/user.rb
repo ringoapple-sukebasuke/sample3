@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :companys, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes
+  has_many :active_notifications, class_name: 'Notification', foreign_key: 'visitor_id', dependent: :destroy
+  has_many :passive_notifications, class_name: 'Notification', foreign_key: 'visited_id', dependent: :destroy
 
   def own?(object)
     id == object.user_id

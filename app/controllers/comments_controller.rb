@@ -6,7 +6,9 @@ class CommentsController < ApplicationController
     @comment = company.comments.build(comment_params)
     @comment.company_id = company.id
     @comment.user_id = current_user.id
+    @company = @comment.company
     if @comment.save
+      @company.create_notification_comment!(current_user, @comment.id)
       flash[:notice] = "コメントしました"
       redirect_to company_path(params[:company_id])
     else

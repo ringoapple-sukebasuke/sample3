@@ -1,0 +1,17 @@
+<% visitor = notification.visitor %>
+<% isited = notification.visited %>
+
+<div class="user-view clearfix ">
+  
+  <% case notification.action %>
+    <% when 'like' then %>
+      <%= visitor.name  %>さんが
+      <%= link_to "あなたの投稿", notification.company %>にいいねしました
+    <% when 'comment' then %>
+      <%= visitor.name  %>さんが
+      <%= link_to "あなたの投稿", notification.company %>にコメントしました
+    <% end %>
+  <% if !@comment.nil? %>
+    <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @comment %></p>
+  <% end %>
+</div>
