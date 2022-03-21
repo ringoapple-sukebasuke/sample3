@@ -1,18 +1,19 @@
 <% visitor = notification.visitor %>
 <% isited = notification.visited %>
 
-<div class="user-view clearfix ">
-  
-  <% case notification.action %>
-    <% when 'like' then %>
-      <%= visitor.name  %>さんが
-      <%= link_to "あなたの投稿", notification.company %>にいいねしました
-    <% when 'comment' then %>
-      <%= visitor.name  %>さんが
-      <%= link_to "あなたの投稿", notification.company %>にコメントしました
+<div class=" container ">
+  <div class="companys-index-item">
+    <% case notification.action %>
+      <% when 'like' then %>
+        <%= visitor.name  %>さんが
+        <%= link_to "あなたの投稿", notification.company, style:"font-weight: bold;" %>にいいねしました
+      <% when 'comment' then %>
+        <%= visitor.name  %>さんが
+        <%= link_to "あなたの投稿", notification.company, style:"font-weight: bold;" %>にコメントしました
+      <% end %>
+      <% if !@comment.nil? %>
+      <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @comment %></p>
     <% end %>
-    <% if !@comment.nil? %>
-    <p class="moderate-font text-center" style="color: #C0C0C0;"><%= @comment %></p>
-  <% end %>
-  <%= " (#{time_ago_in_words(notification.created_at)} 前)" %></span>
+    <%= " (#{time_ago_in_words(notification.created_at)} 前)" %>
+  </div>
 </div>
