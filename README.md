@@ -40,7 +40,7 @@ http://sample-alb-312890317.ap-northeast-1.elb.amazonaws.com/
 <img width="719" alt="6dda97933255a49415cc3809fae83b37" src="https://user-images.githubusercontent.com/75375422/156884061-892893f4-07f2-4a72-830c-5422d0457a3a.png">
 
 <h2>使用技術</h2>
-<p>・ Ruby　2.6.6</p> 
+<p>・ Ruby 2.6.6</p> 
 <p>・ Ruby on Rails 6.1.4.4</p>
 <p>・ MySQL 8.0</p>
 <p>・ Nginx</p>
@@ -68,6 +68,7 @@ http://sample-alb-312890317.ap-northeast-1.elb.amazonaws.com/
 <p>・ 投稿機能</p>
 <p>・ コメント機能</p>
 <p>・ いいね!機能</p>
+<p>・ 通知機能</p>
 <p>・ 検索機能（ransack)</p>
 <p>・ ページネーション機能（kaminari)</p>
 
