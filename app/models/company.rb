@@ -48,4 +48,19 @@ class Company < ApplicationRecord
     end
     notification.save if notification.valid?
   end
+
+  def self.sort(selection)
+    case selection
+    when 'new'
+      return all.order(created_at: :DESC)
+    when 'old'
+      return all.order(created_at: :ASC)
+    when 'likes'
+      return find(Like.group(:company_id).order(Arel.sql('count(company_id) desc')).pluck(:company_id))
+    when 'dislikes'
+      return find(Like.group(:company_id).order(Arel.sql('count(company_id) asc')).pluck(:company_id))
+    when 'number'
+      return all.order(number: :desc)
+    end
+  end
 end

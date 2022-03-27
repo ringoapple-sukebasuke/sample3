@@ -1,0 +1,15 @@
+<h1> 検索結果</h1>
+<%= form_with url: search_path, method: :get, local: true do |form| %>
+  <%= form.select :keyword, [ ['投稿が新しい順', 'new'],
+                            ['投稿が古い順', 'old'],
+                            ['いいねが多い順', 'likes'],
+                            ['いいねが少ない順', 'dislikes'],
+                            ['numberが高い順', 'number'],
+                          ] %>
+  <%= form.submit %>
+<% end %>
+
+<% @companys.each.with_index(1) do |company, i| %>
+  第<%= i %>位
+  <p><%= company.name %></p>
+<% end %>

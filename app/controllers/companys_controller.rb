@@ -62,6 +62,16 @@ class CompanysController < ApplicationController
     end
   end
 
+  def ranking
+    @q = Company.ransack(params[:q])
+    @companys = @q.result(distinct: true).order(id: "DESC").page(params[:page]).per(5)
+  end
+
+  def search
+    selection = params[:keyword]
+    @companys = Company.sort(selection)
+  end
+
   def ensure_correct_user
     @company = Company.find_by(id: params[:id])
     if @company.user_id != current_user.id

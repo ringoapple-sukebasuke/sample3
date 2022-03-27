@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   root 'home#top'
   get 'index', to: 'home#index'
   get 'show', to: 'home#show'
+  get 'companys/ranking', to: 'companys#ranking'
+  get 'search' => 'companys#search'
   resources :companys do
     resources :comments, only: [:create]
   end
