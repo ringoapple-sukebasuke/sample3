@@ -40,6 +40,8 @@ class CompanysController < ApplicationController
     @company = Company.find_by(id: params[:id])
     @company.number = params[:number]
     @company.name = params[:name]
+    @company.total = params[:total]
+    @company.dividend = params[:dividend]
     @company.information = params[:information]
     
     if @company.save
@@ -83,6 +85,6 @@ class CompanysController < ApplicationController
   private
 
   def company_params
-    params.permit(:number, :name, :information).merge(user_id: current_user.id)
+    params.permit(:number, :name, :total, :dividend, :information).merge(user_id: current_user.id)
   end
 end

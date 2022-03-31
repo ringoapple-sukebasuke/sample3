@@ -10,6 +10,12 @@
           企業名<input name="name" value="<%= @company.name %>" class="form-control" />
         </div>
         <div class="form-body">
+          時価総額<input name="total" value="<%= @company.total %>" class="form-control" />
+        </div>
+        <div class="form-body">
+          配当利回り<input name="dividend" value="<%= @company.dividend %>" class="form-control" />
+        </div>
+        <div class="form-body">
           会社情報
           <textarea name="information" class="form-control"><%= @company.information %></textarea>
           <input type="submit" value="投稿">
