@@ -1,19 +1,21 @@
-<h1> 検索結果</h1>
-<%= form_with url: search_path, method: :get, local: true do |form| %>
-  <%= form.select :keyword, [ ['投稿が新しい順', 'new'],
-                            ['投稿が古い順', 'old'],
-                            ['いいねが多い順', 'likes'],
-                            ['いいねが少ない順', 'dislikes'],
-                            ['numberが高い順', 'number'],
-                            ['時価総額が大きい', 'large'],
-                            ['時価総額が小さい', 'small'],
-                            ['配当利回りが高い', 'high'],
-                            ['配当利回りが低い', 'low'],
-                          ] %>
-  <%= form.submit %>
-<% end %>
-
-<% @companys.each.with_index(1) do |company, i| %>
-  第<%= i %>位
-  <p><%= company.name %></p>
-<% end %>
+<div class="container">
+  <h1 class="form-heading">検索結果</h1>
+  <%= form_with url: search_path, method: :get, local: true do |form| %>
+    <%= form.select :keyword, [ ['いいねが多い順', 'likes'],
+                              ['いいねが少ない順', 'dislikes'],
+                              ['銘柄コードが高い順', 'number'],
+                              ['時価総額が大きい', 'large'],
+                              ['時価総額が小さい', 'small'],
+                              ['配当利回りが高い', 'high'],
+                              ['配当利回りが低い', 'low'],
+                            ] %>
+    <%= form.submit value="検索する", class: "btn btn-outline-info" %>
+  <% end %>
+  
+  <% @companys.each.with_index(1) do |company, i| %>
+    <div class="companys-index-item">
+      第<%= i %>位
+      <p><%= link_to(company.name, "/companys/#{company.id}") %></p>
+    </div>
+  <% end %> 
+</div>

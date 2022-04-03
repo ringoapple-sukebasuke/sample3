@@ -1,16 +1,19 @@
-
-
-<h1>こんにちは</h1>
-<%= form_with model: @company, url: search_path, method: :get, local: true do |form| %>
-  <%= form.select :keyword, [ ['投稿が新しい順', 'new'],
-                            ['投稿が古い順', 'old'],
-                            ['いいねが多い順', 'likes'],
-                            ['いいねが少ない順', 'dislikes'],
-                            ['numberが高い順', 'number'],
-                            ['時価総額が大きい', 'large'],
-                            ['時価総額が小さい', 'small'],
-                            ['配当利回りが高い', 'high'],
-                            ['配当利回りが低い', 'low'],
-                          ] %>
-  <%= form.submit %>
-<% end %>
+<div class="container">
+  <div class="companys-index-item">
+    <h1 class="form-heading">様々なランキング</h1>
+    <p>ここでは様々なランキングを検索することができます。<p/>
+    <p>いいねの数で人気の投稿を探したり、配当が良い会社、時価総額が大きい会社などを</p>
+    <p>探してみよう！！</p>
+    <%= form_with model: @company, url: search_path, method: :get, local: true do |form| %>
+      <%= form.select :keyword, [ ['いいねが多い順', 'likes'],
+                                ['いいねが少ない順', 'dislikes'],
+                                ['銘柄コードが高い順', 'number'],
+                                ['時価総額が大きい', 'large'],
+                                ['時価総額が小さい', 'small'],
+                                ['配当利回りが高い', 'high'],
+                                ['配当利回りが低い', 'low'],
+                              ] %>
+      <%= form.submit value="検索する", class: "btn btn-outline-info" %>
+    <% end %>
+  </div>
+</div>

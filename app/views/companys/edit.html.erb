@@ -19,7 +19,9 @@
             時価総額(百万)<input name="total" class="form-control" value=<%= @company.total %> />
           </div>
           <div class="form-body">
-            配当利回り( % )<input name="dividend" class="form-control" value=<%= @company.dividend %> />
+            配当利回り( % )
+            <p>⚠無配の場合は０を入力</p>
+            <input name="dividend" class="form-control" value=<%= @company.dividend %> />
           </div>
           <div class="form-body">
             会社情報

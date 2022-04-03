@@ -53,10 +53,6 @@ class Company < ApplicationRecord
 
   def self.sort(selection)
     case selection
-    when 'new'
-      return all.order(created_at: :DESC)
-    when 'old'
-      return all.order(created_at: :ASC)
     when 'likes'
       return find(Like.group(:company_id).order(Arel.sql('count(company_id) desc')).pluck(:company_id))
     when 'dislikes'
