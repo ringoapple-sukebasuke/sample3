@@ -18,6 +18,8 @@ RSpec.describe "Companys", type: :system do
       click_link "企業登録"
       fill_in "number", with: "1111"
       fill_in "name", with: "Trying out Capybara"
+      fill_in "total", with: "1"
+      fill_in "dividend", with: "1.0"
       fill_in "information", with: "Trying out Capybara"
       click_button "投稿"
     end.to change(user.companys, :count).by(1)
