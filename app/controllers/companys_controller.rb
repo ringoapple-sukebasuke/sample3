@@ -12,7 +12,6 @@ class CompanysController < ApplicationController
     @comments = @company.comments
     @comment = Comment.new
     @likes_count = Like.where(company_id: @company.id).count
-  
   end
 
   def new
@@ -33,7 +32,6 @@ class CompanysController < ApplicationController
 
   def edit
     @company = Company.find_by(id: params[:id])
-    
   end
 
   def update
@@ -43,7 +41,7 @@ class CompanysController < ApplicationController
     @company.total = params[:total]
     @company.dividend = params[:dividend]
     @company.information = params[:information]
-    
+
     if @company.save
 
       flash[:notice] = "投稿を編集しました"

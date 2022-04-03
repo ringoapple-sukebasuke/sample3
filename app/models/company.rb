@@ -54,19 +54,19 @@ class Company < ApplicationRecord
   def self.sort(selection)
     case selection
     when 'likes'
-      return find(Like.group(:company_id).order(Arel.sql('count(company_id) desc')).pluck(:company_id))
+      find(Like.group(:company_id).order(Arel.sql('count(company_id) desc')).pluck(:company_id))
     when 'dislikes'
-      return find(Like.group(:company_id).order(Arel.sql('count(company_id) asc')).pluck(:company_id))
+      find(Like.group(:company_id).order(Arel.sql('count(company_id) asc')).pluck(:company_id))
     when 'number'
-      return all.order(number: :desc)
+      all.order(number: :desc)
     when 'large'
-      return all.order(total: :desc)
+      all.order(total: :desc)
     when 'small'
-      return all.order(total: :asc)
+      all.order(total: :asc)
     when 'high'
-      return all.order(dividend: :desc)
+      all.order(dividend: :desc)
     when 'low'
-      return all.order(dividend: :asc)
+      all.order(dividend: :asc)
     end
   end
 end

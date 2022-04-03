@@ -34,10 +34,10 @@
 
 
 <h2>デプロイ先URL</h2>
-http://sample-alb-312890317.ap-northeast-1.elb.amazonaws.com/
+http://sample-alb-1252455291.ap-northeast-1.elb.amazonaws.com/
 
 <h2>データーベース設計</h2>
-<img width="719" alt="6dda97933255a49415cc3809fae83b37" src="https://user-images.githubusercontent.com/75375422/156884061-892893f4-07f2-4a72-830c-5422d0457a3a.png">
+<img width="719" src="https://user-images.githubusercontent.com/75375422/161410270-5f3b5d29-347f-46ce-ae22-881779625810.png">
 
 <h2>使用技術</h2>
 <p>・ Ruby 2.6.6</p> 
