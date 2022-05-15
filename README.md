@@ -24,7 +24,7 @@
    また、既に登録されている企業についてはコメントをすることができ、みんなで情報を出し合って共有できます。<br>
    企業一覧から登録されている企業を見ることができます。見たい企業について検索することもできます。<br>
    自分が投稿した記事にいいね！やコメントが付くと通知が届きます。<br>
-   その他、もっと詳しく知りたいことがあったらランキング機能を使って、人気の記事やこう配当利回りなど探すこともできます。
+   その他、もっと詳しく知りたいことがあったらランキング機能を使って、人気の記事や高配当利回りなど探すこともできます。
 </p>
 
 ![76c98662bdc703e03f9267650728d0f3-1](https://user-images.githubusercontent.com/75375422/156875815-a674c6c1-a366-4f24-9ce8-863bf6903125.jpg)
@@ -51,7 +51,7 @@ http://sample-alb-1252455291.ap-northeast-1.elb.amazonaws.com/
 <p>・ Terraform</p>
 <p>・ Amazon ECS (Fargate)</p>
 <p>・ GitHub Actions</p>
-<p>・ Docker/Docker-compase</p>
+<p>・ Docker/Docker-compose</p>
 <p>・ RSpec</p>
 <p>・ Rubocop Airbnb</p>
 
